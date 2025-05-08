@@ -1,24 +1,54 @@
 let humanScore = 0;
 let computerScore = 0;
+let hChoice = '';
+
+
+const container = document.querySelector("#container");
+const getHumanScore = document.querySelector('#humascore')
+const getComputerScore = document.querySelector('#computerscore')
+
+const rock = document.querySelector('#rock');
+rock.addEventListener ("click", () => {
+    hChoice = "rock"
+})
+
+const paper = document.querySelector('#paper');
+paper.addEventListener ("click", () => {
+    hChoice = "paper"
+})
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener ("click", () => {
+    hChoice = "scissors"
+})
+
+const playRound = document.createElement("button");
+playRound.innerHTML = "PlayGame";
+playRound.addEventListener("click", () => {
+    playGame();
+})
+
+const score = document.createElement("div")
+
 
 function getHumanChoice() {
-    const hChoice = Math.floor(prompt('0 : rock, 1 : paper, 2 : scissors'))
-    return hChoice < 1 ? 'rock' : hChoice < 2 ? 'paper' : 'scissors';
+    return hChoice
 }
 
 function getComputerChoice() {
     const cChoice = Math.floor(Math.random()* 3);
-    return cChoice < 1 ? 'rock' : cChoice < 2 ? 'paper' : 'scissors';
+    const options = ['rock', 'paper', 'scissors'];
+    return options[cChoice];
 }
 
-function playRound() {
+function playGame() {
     const humanChoice = getHumanChoice();
     const computerChoice = getComputerChoice();
 
     if(humanChoice == computerChoice){
         humanScore++;
         computerScore++;
-        return console.log('draw!, try again refreshing')
+        return score.textContent(`Draw!, the score is you : ${humanScore} and the computer : ${computerScore}`)
     }
     if(humanChoice == "scissors" && computerChoice == "rock") {
         computerScore++;
@@ -46,23 +76,7 @@ function playRound() {
         return console.log(`You won! ${humanChoice} beats ${computerChoice}`)
 }
 
-
-
 }
 
-function playgame() {;
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    console.log(`You won ${humanScore} times and lost ${computerScore} times`)
-    if(humanScore > computerScore){
-        console.log('You are the winner!')
-    }
-}
-
-
-
-
-playgame();
+container.appendChild(score)
+container.appendChild(playRound)
