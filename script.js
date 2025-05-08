@@ -3,9 +3,13 @@ let computerScore = 0;
 let hChoice = '';
 
 
+
+
 const container = document.querySelector("#container");
 const getHumanScore = document.querySelector('#humascore')
 const getComputerScore = document.querySelector('#computerscore')
+const result = document.querySelector('#result')
+
 
 const rock = document.querySelector('#rock');
 rock.addEventListener ("click", () => {
@@ -22,13 +26,27 @@ scissors.addEventListener ("click", () => {
     hChoice = "scissors"
 })
 
+
+
 const playRound = document.createElement("button");
 playRound.innerHTML = "PlayGame";
 playRound.addEventListener("click", () => {
+    
+    
+    
+if(humanScore == 5 || computerScore == 5){
+    if(humanScore > computerScore) {
+        return result.textContent = `You're the winner, you score ${humanScore}`
+    } else if (computerScore > humanScore){
+        return result.textContent = `You Lost! Computer won! it scored ${computerScore}`
+    }else if (computerScore == humanScore){
+        return result.textContent = `Draw! both of you score ${humanScore}`
+    }
+    return;
+}
     playGame();
+   
 })
-
-const result = document.querySelector('#result')
 
 
 function getHumanChoice() {
@@ -45,6 +63,7 @@ function playGame() {
     const humanChoice = getHumanChoice();
     const computerChoice = getComputerChoice();
 
+    
     if(humanChoice == computerChoice){
         humanScore++;
         computerScore++;
@@ -73,7 +92,9 @@ function playGame() {
     if(humanChoice == "paper" && computerChoice == "rock" ) {
         humanScore++;
         return result.textContent = `You won!, the score is you : ${humanScore} and the computer : ${computerScore}`
-}
+    }   
+
+
 
 }
 
