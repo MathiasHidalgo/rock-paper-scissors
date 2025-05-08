@@ -28,7 +28,7 @@ playRound.addEventListener("click", () => {
     playGame();
 })
 
-const score = document.createElement("div")
+const result = document.querySelector('#result')
 
 
 function getHumanChoice() {
@@ -48,35 +48,34 @@ function playGame() {
     if(humanChoice == computerChoice){
         humanScore++;
         computerScore++;
-        return score.textContent(`Draw!, the score is you : ${humanScore} and the computer : ${computerScore}`)
+        return result.textContent = `Draw!, the score is you : ${humanScore} and the computer : ${computerScore}`
     }
     if(humanChoice == "scissors" && computerChoice == "rock") {
         computerScore++;
-        return console.log(`You lost! ${computerChoice} beats ${humanChoice}`)
+        return result.textContent = `You lost!, the score is you : ${humanScore} and the computer : ${computerScore}`
     }
     if(computerChoice == "scissors" && humanChoice == "rock") {
         humanScore++;
-        return console.log(`You won! ${humanChoice} beats ${computerChoice}`) 
+        return result.textContent = `You won! , the score is you : ${humanScore} and the computer : ${computerScore}` 
     }
     if(humanChoice == "scissors" && computerChoice == "paper") {
         humanScore++;
-        return console.log(`You won! ${humanChoice} beats ${computerChoice}`) 
+        return result.textContent = `You won!, the score is you : ${humanScore} and the computer : ${computerScore}`
     }
     if(computerChoice == "scissors" && humanChoice == "paper") {
         computerScore++;
-        return console.log(`You lost! ${computerChoice} beats ${humanChoice}`) 
+        return result.textContent = `You lost!, the score is you : ${humanScore} and the computer : ${computerScore}`
     }
-
     if(computerChoice == "paper" && humanChoice == "rock") {
         computerScore++;
-        return console.log(`You lost! ${computerChoice} beats ${humanChoice}`) 
+        return result.textContent = `You lost!, the score is you : ${humanScore} and the computer : ${computerScore}`
     }
     if(humanChoice == "paper" && computerChoice == "rock" ) {
         humanScore++;
-        return console.log(`You won! ${humanChoice} beats ${computerChoice}`)
+        return result.textContent = `You won!, the score is you : ${humanScore} and the computer : ${computerScore}`
 }
 
 }
 
-container.appendChild(score)
+container.appendChild(result)
 container.appendChild(playRound)
